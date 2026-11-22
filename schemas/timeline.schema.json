@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://incubrix.ai/schemas/timeline.schema.json",
+  "title": "IncuBrixCompiledTimeline",
+  "description": "Deterministic content-anchored compiled timeline representation for the IncuBrix Prompt-Based Video Editing Engine.",
+  "type": "object",
+  "required": [
+    "duration_ms",
+    "duration_s",
+    "video_segments",
+    "audio_segments",
+    "caption_tracks",
+    "bgm_tracks",
+    "timeline_hash",
+    "active_operation_ids"
+  ],
+  "properties": {
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total duration of compiled timeline in integer milliseconds."
+    },
+    "duration_s": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Total duration of compiled timeline in seconds."
+    },
+    "timeline_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "Canonical SHA-256 hash of the compiled timeline projection."
+    },
+    "active_operation_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of active operation IDs contributing to this compiled timeline state."
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "System warnings generated during timeline compilation."
+    },
+    "video_segments": {
+      "type": "array",
+      "description": "Chronologically ordered video source playback segments.",
+      "items": {
+        "$ref": "#/$defs/VideoSegment"
+      }
+    },
+    "audio_segments": {
+      "type": "array",
+      "description": "Chronologically ordered audio playback segments including mutes and bleeps.",
+      "items": {
+        "$ref": "#/$defs/AudioSegment"
+      }
+    },
+    "caption_tracks": {
+      "type": "array",
+      "description": "Caption items anchored to content words rather than clock times.",
+      "items": {
+        "$ref": "#/$defs/CaptionItem"
+      }
+    },
+    "bgm_tracks": {
+      "type": "array",
+      "description": "Background music tracks with speech-aware ducking envelopes.",
+      "items": {
+        "$ref": "#/$defs/BgmTrack"
+      }
+    }
+  },
+  "$defs": {
+    "VideoSegment": {
+      "type": "object",
+      "required": [
+        "segment_id",
+        "source_start_ms",
+        "source_end_ms",
+        "timeline_start_ms",
+        "timeline_end_ms",
+        "speed",
+        "word_ids"
+      ],
+      "properties": {
+        "segment_id": { "type": "string" },
+        "source_start_ms": { "type": "integer", "minimum": 0 },
+        "source_end_ms": { "type": "integer", "minimum": 0 },
+        "timeline_start_ms": { "type": "integer", "minimum": 0 },
+        "timeline_end_ms": { "type": "integer", "minimum": 0 },
+        "speed": { "type": "number", "exclusiveMinimum": 0.0, "maximum": 8.0 },
+        "word_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "AudioSegment": {
+      "type": "object",
+      "required": [
+        "segment_id",
+        "source_start_ms",
+        "source_end_ms",
+        "timeline_start_ms",
+        "timeline_end_ms",
+        "speed",
+        "is_muted",
+        "is_bleeped",
+        "volume",
+        "word_ids"
+      ],
+      "properties": {
+        "segment_id": { "type": "string" },
+        "source_start_ms": { "type": "integer", "minimum": 0 },
+        "source_end_ms": { "type": "integer", "minimum": 0 },
+        "timeline_start_ms": { "type": "integer", "minimum": 0 },
+        "timeline_end_ms": { "type": "integer", "minimum": 0 },
+        "speed": { "type": "number", "exclusiveMinimum": 0.0, "maximum": 8.0 },
+        "is_muted": { "type": "boolean" },
+        "is_bleeped": { "type": "boolean" },
+        "volume": { "type": "number", "minimum": 0.0 },
+        "word_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "CaptionItem": {
+      "type": "object",
+      "required": [
+        "caption_id",
+        "text",
+        "timeline_start_ms",
+        "timeline_end_ms",
+        "bound_word_ids",
+        "style",
+        "suppressed"
+      ],
+      "properties": {
+        "caption_id": { "type": "string" },
+        "text": { "type": "string" },
+        "timeline_start_ms": { "type": "integer", "minimum": 0 },
+        "timeline_end_ms": { "type": "integer", "minimum": 0 },
+        "bound_word_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "style": { "type": "object" },
+        "suppressed": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "BgmEnvelopePoint": {
+      "type": "object",
+      "required": ["timeline_ms", "volume_db"],
+      "properties": {
+        "timeline_ms": { "type": "integer", "minimum": 0 },
+        "volume_db": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "BgmTrack": {
+      "type": "object",
+      "required": ["track_id", "source_url", "volume", "ducking_envelope"],
+      "properties": {
+        "track_id": { "type": "string" },
+        "source_url": { "type": "string" },
+        "volume": { "type": "number", "minimum": 0.0 },
+        "ducking_envelope": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/BgmEnvelopePoint" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
