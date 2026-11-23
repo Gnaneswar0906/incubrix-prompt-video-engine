@@ -88,6 +88,7 @@ if os.path.exists(static_dir):
 
 
 @app.get("/", include_in_schema=False)
+@app.get("/index.html", include_in_schema=False)
 def serve_studio_ui():
     """Serves the Interactive Web Studio at root."""
     index_path = os.path.join(static_dir, "index.html")

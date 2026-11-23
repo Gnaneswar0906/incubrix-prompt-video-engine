@@ -21,3 +21,10 @@ data/session_outputs/
 data/*.db
 *.db
 test_out.mp4
+
+# Space clean ignores
+*.mp4
+*.xlsx
+*.pdf
+incubrix-video-studio/
+

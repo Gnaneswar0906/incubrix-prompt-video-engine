@@ -1,3 +1,16 @@
+---
+title: Incubrix Video Studio
+emoji: 🎬
+colorFrom: red
+colorTo: gray
+sdk: gradio
+sdk_version: 5.20.1
+python_version: '3.12'
+app_file: app.py
+pinned: false
+license: apache-2.0
+---
+
 # IncuBrix Prompt-Based Video Editing Engine & Studio
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/)
