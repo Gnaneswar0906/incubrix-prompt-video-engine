@@ -421,33 +421,47 @@ body.dark-theme {
 
 /* Three-Way Response Colors */
 .card-applied {
-  background-color: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.35);
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  border: 1px solid rgba(16, 185, 129, 0.45) !important;
+  border-left: 5px solid #10b981 !important;
 }
 
 .card-applied .status-tag {
-  color: var(--accent-green);
-  font-weight: 700;
+  background-color: rgba(16, 185, 129, 0.25) !important;
+  color: #34d399 !important;
+  font-weight: 800 !important;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
 }
 
-.card-clarify {
-  background-color: rgba(245, 158, 11, 0.08);
-  border-color: rgba(245, 158, 11, 0.4);
+.card-clarify,
+.card-needs_clarification {
+  background-color: rgba(245, 158, 11, 0.14) !important;
+  border: 1px solid rgba(245, 158, 11, 0.55) !important;
+  border-left: 5px solid #f59e0b !important;
 }
 
-.card-clarify .status-tag {
-  color: var(--accent-amber);
-  font-weight: 700;
+.card-clarify .status-tag,
+.card-needs_clarification .status-tag {
+  background-color: rgba(245, 158, 11, 0.25) !important;
+  color: #fbbf24 !important;
+  font-weight: 800 !important;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
 }
 
 .card-rejected {
-  background-color: rgba(239, 68, 68, 0.08);
-  border-color: rgba(239, 68, 68, 0.35);
+  background-color: rgba(239, 68, 68, 0.14) !important;
+  border: 1px solid rgba(239, 68, 68, 0.55) !important;
+  border-left: 5px solid #ef4444 !important;
 }
 
 .card-rejected .status-tag {
-  color: var(--accent-red);
-  font-weight: 700;
+  background-color: rgba(239, 68, 68, 0.25) !important;
+  color: #f87171 !important;
+  font-weight: 800 !important;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
 }
 
 .card-top {

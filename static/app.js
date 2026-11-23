@@ -231,7 +231,8 @@ function addResponseCard(instruction, resp) {
   const card = document.createElement('div');
   const status = resp.status || 'applied';
 
-  card.className = `response-card card-${status}`;
+  const cardTypeClass = status === 'needs_clarification' ? 'card-clarify card-needs_clarification' : `card-${status}`;
+  card.className = `response-card ${cardTypeClass}`;
 
   let summaryHtml = '';
   if (status === 'applied') {
