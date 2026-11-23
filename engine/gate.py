@@ -507,8 +507,8 @@ class DecisionGate:
                 "phrase": phrase,
             }]
 
-        # 5. Speed up from X to Y by Zx
-        speed_match = re.search(r"speed\s+up(?:\s+from\s+(\d+:\d+|\d+)\s+to\s+(\d+:\d+|\d+))?\s+by\s+(-?\d+(?:\.\d+)?)x?", raw, re.IGNORECASE)
+        # 5. Speed up from X to Y by/to Zx
+        speed_match = re.search(r"speed\s+up(?:\s+from\s+(\d+:\d+|\d+)\s+to\s+(\d+:\d+|\d+))?\s+(?:by|to)\s+(-?\d+(?:\.\d+)?)x?", raw, re.IGNORECASE)
         if speed_match:
             start_str, end_str, factor_str = speed_match.groups()
             factor = float(factor_str)
