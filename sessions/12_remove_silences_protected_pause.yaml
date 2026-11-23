@@ -1,0 +1,5 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Session 12: Remove Silences with Protected Pause Preservation"
+steps:
+  - say: "Remove all silences"
+  - say: "Cut the first 10 seconds"

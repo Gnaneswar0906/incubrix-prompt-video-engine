@@ -1,0 +1,5 @@
+video: "test_media/no_audio_clip.mp4"
+title: "Session 16: Silent Media Handling & Audio Normalization"
+steps:
+  - say: "Cut the first 3 seconds"
+  - say: "Add background music"

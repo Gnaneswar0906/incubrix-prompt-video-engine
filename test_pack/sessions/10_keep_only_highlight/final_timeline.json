@@ -1,0 +1,67 @@
+{
+  "duration_ms": 30000,
+  "duration_s": 30.0,
+  "video_segments": [
+    {
+      "segment_id": "v_seg_001",
+      "source_start_ms": 40000,
+      "source_end_ms": 70000,
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 30000,
+      "speed": 1.0,
+      "word_ids": [
+        "w_0009",
+        "w_0010",
+        "w_0011",
+        "w_0012",
+        "w_0013",
+        "w_0014",
+        "w_0015",
+        "w_0016"
+      ]
+    }
+  ],
+  "audio_segments": [
+    {
+      "segment_id": "a_seg_001",
+      "source_start_ms": 40000,
+      "source_end_ms": 70000,
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 30000,
+      "speed": 1.0,
+      "is_muted": false,
+      "is_bleeped": false,
+      "volume": 1.0,
+      "word_ids": [
+        "w_0009",
+        "w_0010",
+        "w_0011",
+        "w_0012",
+        "w_0013",
+        "w_0014",
+        "w_0015",
+        "w_0016"
+      ]
+    }
+  ],
+  "caption_tracks": [
+    {
+      "caption_id": "cap_001",
+      "text": "Highlights",
+      "timeline_start_ms": 2000,
+      "timeline_end_ms": 2700,
+      "bound_word_ids": [
+        "w_0009"
+      ],
+      "style": {},
+      "suppressed": false
+    }
+  ],
+  "bgm_tracks": [],
+  "timeline_hash": "5fc5b29080e04f7caff5737ac604772a82fb6e264378b951a92daf893357593c",
+  "active_operation_ids": [
+    "op_keep_only_1_1",
+    "op_caption_2_2"
+  ],
+  "warnings": []
+}

@@ -1,0 +1,7 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Hard Case 4: Selective Undo & Target Validation"
+steps:
+  - say: "Add background music"
+  - say: "Cut the first 10 seconds"
+  - say: "Undo"
+  - say: "Make it bigger"

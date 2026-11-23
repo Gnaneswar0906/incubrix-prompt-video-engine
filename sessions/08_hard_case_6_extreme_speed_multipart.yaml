@@ -1,0 +1,6 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Hard Case 6: Extreme Speed Factor & Multi-Part Rejections"
+steps:
+  - say: "Speed up by 10x"
+  - say: "Cut the first 500 seconds"
+  - say: "Cut the first 10 seconds and speed up by 12x"

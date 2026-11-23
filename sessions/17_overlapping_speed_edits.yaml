@@ -1,0 +1,5 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Session 17: Overlapping Speed Edits & Resolution Rules"
+steps:
+  - say: "Speed up from 0:10 to 0:30 by 1.5x"
+  - say: "Speed up from 0:20 to 0:40 by 2x"

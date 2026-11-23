@@ -1,0 +1,110 @@
+{
+  "timestamp": "2026-11-23T01:42:50.056200+00:00",
+  "video": "C:\\Users\\repal\\Downloads\\B-TECH\\Placement\\Incrubrix Software Intern\\test_media\\single_speaker_interview.mp4",
+  "total_steps": 4,
+  "steps": [
+    {
+      "step": 1,
+      "instruction": "Remove 0:30-0:40",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 90000,
+        "after_duration_ms": 80000,
+        "before_duration_s": 90.0,
+        "after_duration_s": 80.0,
+        "what_moved": "Applied cut. Timeline shortened by 10000 ms (90000 ms -> 80000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_cut_1_1",
+            "op_type": "cut"
+          }
+        ]
+      },
+      "timeline_hash": "559c36d683b8b976defb75a27f4151073c51972c52832c1d9d31200b946d162d",
+      "duration_s": 80.0,
+      "warnings": []
+    },
+    {
+      "step": 2,
+      "instruction": "Remove 0:30-0:40",
+      "status": "rejected",
+      "summary": {
+        "error_code": "DUPLICATE_OPERATION",
+        "message": "Target content has already been removed in an earlier operation.",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "rejected",
+            "code": "DUPLICATE_OPERATION",
+            "message": "Target content has already been removed in an earlier operation."
+          }
+        ],
+        "time_policy": "current_timeline_time"
+      },
+      "timeline_hash": "559c36d683b8b976defb75a27f4151073c51972c52832c1d9d31200b946d162d",
+      "duration_s": 80.0,
+      "warnings": [
+        "Part 1 rejected: Target content has already been removed in an earlier operation. (DUPLICATE_OPERATION)"
+      ]
+    },
+    {
+      "step": 3,
+      "instruction": "Add a caption at 5:00",
+      "status": "rejected",
+      "summary": {
+        "error_code": "OUT_OF_RANGE",
+        "message": "Requested timestamp 300000ms exceeds current timeline duration of 80000ms.",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "rejected",
+            "code": "OUT_OF_RANGE",
+            "message": "Requested timestamp 300000ms exceeds current timeline duration of 80000ms."
+          }
+        ],
+        "time_policy": "current_timeline_time"
+      },
+      "timeline_hash": "559c36d683b8b976defb75a27f4151073c51972c52832c1d9d31200b946d162d",
+      "duration_s": 80.0,
+      "warnings": [
+        "Part 1 rejected: Requested timestamp 300000ms exceeds current timeline duration of 80000ms. (OUT_OF_RANGE)"
+      ]
+    },
+    {
+      "step": 4,
+      "instruction": "Cut the last 10 seconds",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 80000,
+        "after_duration_ms": 70000,
+        "before_duration_s": 80.0,
+        "after_duration_s": 70.0,
+        "what_moved": "Applied cut. Timeline shortened by 10000 ms (80000 ms -> 70000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_cut_4_2",
+            "op_type": "cut"
+          }
+        ]
+      },
+      "timeline_hash": "551f2c086a745372c5bafbbf04d6155e007656902ecf29ebd7bc84de11b41fdc",
+      "duration_s": 70.0,
+      "warnings": []
+    }
+  ],
+  "final_timeline_hash": "551f2c086a745372c5bafbbf04d6155e007656902ecf29ebd7bc84de11b41fdc",
+  "final_duration_s": 70.0,
+  "artifacts": {
+    "results_json": "test_pack\\sessions\\05_hard_case_3_duplicates_and_time_formats\\results.json",
+    "final_timeline_json": "test_pack\\sessions\\05_hard_case_3_duplicates_and_time_formats\\final_timeline.json",
+    "final_timeline_otio": "test_pack\\sessions\\05_hard_case_3_duplicates_and_time_formats\\final_timeline.otio",
+    "manifest_json": "test_pack\\sessions\\05_hard_case_3_duplicates_and_time_formats\\manifest.json",
+    "rendered_mp4": "test_pack\\sessions\\05_hard_case_3_duplicates_and_time_formats\\rendered.mp4"
+  }
+}

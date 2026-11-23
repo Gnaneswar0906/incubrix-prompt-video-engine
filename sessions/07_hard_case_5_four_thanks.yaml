@@ -1,0 +1,5 @@
+video: "test_media/two_speaker_podcast.mp4"
+title: "Hard Case 5: Four Occurrences of 'Thanks' with Disambiguation"
+steps:
+  - say: "Remove everything after I say thanks"
+    answer: "the first one"

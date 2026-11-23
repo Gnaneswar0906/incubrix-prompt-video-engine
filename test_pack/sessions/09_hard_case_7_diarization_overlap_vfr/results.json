@@ -1,0 +1,64 @@
+{
+  "timestamp": "2026-11-23T01:43:23.692814+00:00",
+  "video": "C:\\Users\\repal\\Downloads\\B-TECH\\Placement\\Incrubrix Software Intern\\test_media\\two_speaker_podcast.mp4",
+  "total_steps": 2,
+  "steps": [
+    {
+      "step": 1,
+      "instruction": "Add background music",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 121000,
+        "after_duration_ms": 121000,
+        "before_duration_s": 121.0,
+        "after_duration_s": 121.0,
+        "what_moved": "Applied add_bgm. Timeline duration unchanged (121000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_add_bgm_1_1",
+            "op_type": "add_bgm"
+          }
+        ]
+      },
+      "timeline_hash": "29c5f60e3683bf957a67065d51694e66c4a28f14c5e124cc8ca8841c517ab7ca",
+      "duration_s": 121.0,
+      "warnings": []
+    },
+    {
+      "step": 2,
+      "instruction": "Speed up from 0:10 to 0:30 by 1.5x",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 121000,
+        "after_duration_ms": 114333,
+        "before_duration_s": 121.0,
+        "after_duration_s": 114.333,
+        "what_moved": "Applied speed. Timeline shortened by 6667 ms (121000 ms -> 114333 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_speed_2_2",
+            "op_type": "speed"
+          }
+        ]
+      },
+      "timeline_hash": "1c47d7f935a2be8df47445690d7fac4d97ead3af41cc9ea6d4190048841b1568",
+      "duration_s": 114.333,
+      "warnings": []
+    }
+  ],
+  "final_timeline_hash": "1c47d7f935a2be8df47445690d7fac4d97ead3af41cc9ea6d4190048841b1568",
+  "final_duration_s": 114.333,
+  "artifacts": {
+    "results_json": "test_pack\\sessions\\09_hard_case_7_diarization_overlap_vfr\\results.json",
+    "final_timeline_json": "test_pack\\sessions\\09_hard_case_7_diarization_overlap_vfr\\final_timeline.json",
+    "final_timeline_otio": "test_pack\\sessions\\09_hard_case_7_diarization_overlap_vfr\\final_timeline.otio",
+    "manifest_json": "test_pack\\sessions\\09_hard_case_7_diarization_overlap_vfr\\manifest.json",
+    "rendered_mp4": "test_pack\\sessions\\09_hard_case_7_diarization_overlap_vfr\\rendered.mp4"
+  }
+}

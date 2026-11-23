@@ -1,0 +1,6 @@
+video: "test_media/two_speaker_podcast.mp4"
+title: "Two Speaker Podcast - Remove Guest Job & Disambiguate Host Lead-In"
+steps:
+  - say: "Remove everything the guest says about their old job"
+    answer: "yes, remove the lead-in question too"
+  - say: "Add a caption 'Host' when I say welcome"

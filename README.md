@@ -120,19 +120,23 @@ pip install -r requirements.txt
 # 5. Generate synthetic media
 python scripts/generate_test_media.py
 
-# 6. Run complete test suite (53/53 tests pass)
+# 6. Run complete test suite (95/95 tests pass)
 pytest tests/ -v
 
 # 7. Run CLI worked example session
 python cli/session_runner.py examples/worked_example_session.yaml
 
-# 8. Start Web Studio & API server
+# 8. Run full 18-session verification pack & hardware benchmarks
+python scripts/run_benchmarks.py
+python -c "from cli.session_runner import load_session_file, run_session; import glob, os; [run_session(load_session_file(f), output_dir=os.path.join('test_pack', 'sessions', os.path.splitext(os.path.basename(f))[0])) for f in sorted(glob.glob('sessions/*.yaml'))]"
+
+# 9. Start Web Studio & API server
 uvicorn service.app:app --host 0.0.0.0 --port 8000
 ```
 
 ---
 
-## 7. Test Suite Summary
+## 7. Test Suite Summary (95/95 Passing)
 
 ```
 tests/test_compiler.py (26 unit tests):
@@ -170,5 +174,53 @@ tests/test_studio_and_cli.py (7 integration tests):
   - CLI session runner executing worked example end-to-end (YAML and JSON)
   - Artifact verification (results.json, final_timeline.otio, rendered.mp4)
 
-Total: 53 passed in ~34 seconds (100% pass rate).
+tests/test_scenarios_45.py (42 automated CI scenarios):
+  - 5x repeated determinism runs verifying canonical hash
+  - 8x Decision Gate rejection scenarios (out of range, extreme speed, empty timeline, missing targets)
+  - Duplicate cut prevention (range and word targets)
+  - Disambiguation and clarification quality tests (pricing, choices, multi-speaker questions)
+  - Multi-part instruction validation with partial execution reporting
+  - Content-anchored caption invariants across cuts and speed changes
+  - Non-linear restore_op and undo/redo cycle testing
+  - Natural human time format parsing (ranges, clock formats, colloquial seconds)
+
+Total: 95 passed in ~32 seconds (100% pass rate).
 ```
+
+---
+
+## 8. Measured Benchmark Metrics (`test_pack/metrics_report.json`)
+
+| Metric | Target / Requirement | Measured Value | Status |
+| :--- | :--- | :--- | :--- |
+| **5-min Video Latency** | Fast response | **Median: 4.28 ms**, Slowest: 6.88 ms | **PASS** |
+| **60-min Video Latency** | $< 3.0$ seconds | **Median: 25.74 ms**, Slowest: 73.29 ms | **PASS** |
+| **Render A/V Sync Offset** | $\le 1.0$ frame | **0.0 frames** | **PASS** |
+| **Render Length Difference** | $\le 1.0$ frame | **0.0 frames** | **PASS** |
+| **Compiler Determinism** | 100% identical hash across 3 runs | **100.0%** (`d4020293bd56ae78...`) | **PASS** |
+| **Word Clipping Audit** | 0 clipped words in 20 cuts | **0 clipped words** (±120ms snapping) | **PASS** |
+| **Clarification Quality** | Never guess on ambiguous commands | **100%** (10/10 asked clarification) | **PASS** |
+| **Inference Cost** | Low / Commercially viable | **$0.00 / min** (100% local inference) | **PASS** |
+
+---
+
+## 9. 18-Session Scripted Verification Pack (`test_pack/sessions/`)
+
+Every session in `sessions/` has been executed into `test_pack/sessions/<name>/`, generating all 5 required artifacts:
+1. `results.json`: Full execution transcript with three-way statuses, summaries, questions, and options.
+2. `final_timeline.json`: Validated JSON timeline conforming to `schemas/timeline.schema.json`.
+3. `final_timeline.otio`: OpenTimelineIO interchange format for external NLE verification.
+4. `manifest.json`: Full provenance audit manifest with model versions, hardware info, and commercial licensing.
+5. `rendered.mp4`: Frame-accurate rendered MP4 output.
+
+---
+
+## 10. Submission Materials
+
+- **Filled Assessment Form**: `Assessment2_Repalle_Gnaneswar.xlsx` (and `IncuBrix_Assessment_2_Prompt_Based_Video_Editing_Engine_Submission_Form.xlsx`)
+  - **Must-haves**: 8 of 8 Met (Yes) with file, test, and artifact evidence links.
+  - **Level Reached**: **Outstanding** (40 / 40 marks claimed).
+  - **Integration Standard**: 10 of 10 Met (20 / 20 marks claimed).
+  - **Total Self-Assessed Screening Marks**: **60 / 60**.
+- **Engineering Report**: Comprehensive architecture and verification writeup in `REPORT.md`.
+- **License & Provenance Audits**: Commercially safe license inventory in `SOURCES.md` and AI usage disclosure in `AI_USE.md`.

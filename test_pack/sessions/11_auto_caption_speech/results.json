@@ -1,0 +1,64 @@
+{
+  "timestamp": "2026-11-23T01:43:37.551609+00:00",
+  "video": "C:\\Users\\repal\\Downloads\\B-TECH\\Placement\\Incrubrix Software Intern\\test_media\\single_speaker_interview.mp4",
+  "total_steps": 2,
+  "steps": [
+    {
+      "step": 1,
+      "instruction": "Add a caption 'Welcome!' when I say welcome to the channel",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 90000,
+        "after_duration_ms": 90000,
+        "before_duration_s": 90.0,
+        "after_duration_s": 90.0,
+        "what_moved": "Applied caption. Timeline duration unchanged (90000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_caption_1_1",
+            "op_type": "caption"
+          }
+        ]
+      },
+      "timeline_hash": "10a9d89eb0593acb2928d69c116c329ea05eb630de4b5c9203776b15cc30363c",
+      "duration_s": 90.0,
+      "warnings": []
+    },
+    {
+      "step": 2,
+      "instruction": "Make that caption red",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 90000,
+        "after_duration_ms": 90000,
+        "before_duration_s": 90.0,
+        "after_duration_s": 90.0,
+        "what_moved": "Applied style_caption. Timeline duration unchanged (90000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_style_caption_2_2",
+            "op_type": "style_caption"
+          }
+        ]
+      },
+      "timeline_hash": "f691e27e981e132aba9183f34f43f8aa01cb180fabdd455d8fa3d994ed9477a5",
+      "duration_s": 90.0,
+      "warnings": []
+    }
+  ],
+  "final_timeline_hash": "f691e27e981e132aba9183f34f43f8aa01cb180fabdd455d8fa3d994ed9477a5",
+  "final_duration_s": 90.0,
+  "artifacts": {
+    "results_json": "test_pack\\sessions\\11_auto_caption_speech\\results.json",
+    "final_timeline_json": "test_pack\\sessions\\11_auto_caption_speech\\final_timeline.json",
+    "final_timeline_otio": "test_pack\\sessions\\11_auto_caption_speech\\final_timeline.otio",
+    "manifest_json": "test_pack\\sessions\\11_auto_caption_speech\\manifest.json",
+    "rendered_mp4": "test_pack\\sessions\\11_auto_caption_speech\\rendered.mp4"
+  }
+}

@@ -1,0 +1,5 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Session 14: Low-Confidence Word Flagging & System Warnings"
+steps:
+  - say: "Cut the first 15 seconds"
+  - say: "Undo"

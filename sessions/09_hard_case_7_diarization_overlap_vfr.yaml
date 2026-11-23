@@ -1,0 +1,5 @@
+video: "test_media/two_speaker_podcast.mp4"
+title: "Hard Case 7: Diarization Overlap, BGM Ducking & VFR Media"
+steps:
+  - say: "Add background music"
+  - say: "Speed up from 0:10 to 0:30 by 1.5x"

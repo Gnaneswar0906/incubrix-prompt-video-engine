@@ -1,0 +1,118 @@
+{
+  "duration_ms": 120500,
+  "duration_s": 120.5,
+  "video_segments": [
+    {
+      "segment_id": "v_seg_001",
+      "source_start_ms": 0,
+      "source_end_ms": 5000,
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 5000,
+      "speed": 1.0,
+      "word_ids": [
+        "p_0001",
+        "p_0002",
+        "p_0003",
+        "p_0004"
+      ]
+    },
+    {
+      "segment_id": "v_seg_002",
+      "source_start_ms": 5500,
+      "source_end_ms": 61500,
+      "timeline_start_ms": 5000,
+      "timeline_end_ms": 61000,
+      "speed": 1.0,
+      "word_ids": [
+        "p_0006",
+        "p_0007",
+        "p_0008",
+        "p_0009",
+        "p_0010",
+        "p_0011",
+        "p_0012",
+        "p_0013",
+        "p_0014",
+        "p_0015"
+      ]
+    },
+    {
+      "segment_id": "v_seg_003",
+      "source_start_ms": 60500,
+      "source_end_ms": 120000,
+      "timeline_start_ms": 61000,
+      "timeline_end_ms": 120500,
+      "speed": 1.0,
+      "word_ids": [
+        "p_0016",
+        "p_0017",
+        "p_0018"
+      ]
+    }
+  ],
+  "audio_segments": [
+    {
+      "segment_id": "a_seg_001",
+      "source_start_ms": 0,
+      "source_end_ms": 5000,
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 5000,
+      "speed": 1.0,
+      "is_muted": false,
+      "is_bleeped": false,
+      "volume": 1.0,
+      "word_ids": [
+        "p_0001",
+        "p_0002",
+        "p_0003",
+        "p_0004"
+      ]
+    },
+    {
+      "segment_id": "a_seg_002",
+      "source_start_ms": 5500,
+      "source_end_ms": 61500,
+      "timeline_start_ms": 5000,
+      "timeline_end_ms": 61000,
+      "speed": 1.0,
+      "is_muted": false,
+      "is_bleeped": false,
+      "volume": 1.0,
+      "word_ids": [
+        "p_0006",
+        "p_0007",
+        "p_0008",
+        "p_0009",
+        "p_0010",
+        "p_0011",
+        "p_0012",
+        "p_0013",
+        "p_0014",
+        "p_0015"
+      ]
+    },
+    {
+      "segment_id": "a_seg_003",
+      "source_start_ms": 60500,
+      "source_end_ms": 120000,
+      "timeline_start_ms": 61000,
+      "timeline_end_ms": 120500,
+      "speed": 1.0,
+      "is_muted": false,
+      "is_bleeped": false,
+      "volume": 1.0,
+      "word_ids": [
+        "p_0016",
+        "p_0017",
+        "p_0018"
+      ]
+    }
+  ],
+  "caption_tracks": [],
+  "bgm_tracks": [],
+  "timeline_hash": "874b9943bb736b005ed875c7377741ad861b0c185ba93a7ba70b798cff0e8335",
+  "active_operation_ids": [
+    "op_cut_1_1"
+  ],
+  "warnings": []
+}

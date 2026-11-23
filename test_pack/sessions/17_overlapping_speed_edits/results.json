@@ -1,0 +1,64 @@
+{
+  "timestamp": "2026-11-23T01:44:19.496922+00:00",
+  "video": "C:\\Users\\repal\\Downloads\\B-TECH\\Placement\\Incrubrix Software Intern\\test_media\\single_speaker_interview.mp4",
+  "total_steps": 2,
+  "steps": [
+    {
+      "step": 1,
+      "instruction": "Speed up from 0:10 to 0:30 by 1.5x",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 90000,
+        "after_duration_ms": 83333,
+        "before_duration_s": 90.0,
+        "after_duration_s": 83.333,
+        "what_moved": "Applied speed. Timeline shortened by 6667 ms (90000 ms -> 83333 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_speed_1_1",
+            "op_type": "speed"
+          }
+        ]
+      },
+      "timeline_hash": "142b1b8764609e4b45e0356d5c4ef38e247d4fc36874e469d573eaa0ba37dc12",
+      "duration_s": 83.333,
+      "warnings": []
+    },
+    {
+      "step": 2,
+      "instruction": "Speed up from 0:20 to 0:40 by 2x",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 83333,
+        "after_duration_ms": 76666,
+        "before_duration_s": 83.333,
+        "after_duration_s": 76.666,
+        "what_moved": "Applied speed. Timeline shortened by 6667 ms (83333 ms -> 76666 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_speed_2_2",
+            "op_type": "speed"
+          }
+        ]
+      },
+      "timeline_hash": "d2eac27f56140a92cc2e33499f43de3c38ec28bcebbffa481caba6222b6cf046",
+      "duration_s": 76.666,
+      "warnings": []
+    }
+  ],
+  "final_timeline_hash": "d2eac27f56140a92cc2e33499f43de3c38ec28bcebbffa481caba6222b6cf046",
+  "final_duration_s": 76.666,
+  "artifacts": {
+    "results_json": "test_pack\\sessions\\17_overlapping_speed_edits\\results.json",
+    "final_timeline_json": "test_pack\\sessions\\17_overlapping_speed_edits\\final_timeline.json",
+    "final_timeline_otio": "test_pack\\sessions\\17_overlapping_speed_edits\\final_timeline.otio",
+    "manifest_json": "test_pack\\sessions\\17_overlapping_speed_edits\\manifest.json",
+    "rendered_mp4": "test_pack\\sessions\\17_overlapping_speed_edits\\rendered.mp4"
+  }
+}

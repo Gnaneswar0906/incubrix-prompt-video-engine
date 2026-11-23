@@ -1,0 +1,208 @@
+{
+  "duration_ms": 114333,
+  "duration_s": 114.333,
+  "video_segments": [
+    {
+      "segment_id": "v_seg_001",
+      "source_start_ms": 0,
+      "source_end_ms": 10000,
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 10000,
+      "speed": 1.0,
+      "word_ids": [
+        "p_0001",
+        "p_0002",
+        "p_0003",
+        "p_0004",
+        "p_0005",
+        "p_0006",
+        "p_0007",
+        "p_0008"
+      ]
+    },
+    {
+      "segment_id": "v_seg_002",
+      "source_start_ms": 10000,
+      "source_end_ms": 30000,
+      "timeline_start_ms": 10000,
+      "timeline_end_ms": 23333,
+      "speed": 1.5,
+      "word_ids": [
+        "p_0009",
+        "p_0010",
+        "p_0011",
+        "p_0012",
+        "p_0013",
+        "p_0014"
+      ]
+    },
+    {
+      "segment_id": "v_seg_003",
+      "source_start_ms": 30000,
+      "source_end_ms": 61500,
+      "timeline_start_ms": 23333,
+      "timeline_end_ms": 54833,
+      "speed": 1.0,
+      "word_ids": [
+        "p_0015"
+      ]
+    },
+    {
+      "segment_id": "v_seg_004",
+      "source_start_ms": 60500,
+      "source_end_ms": 120000,
+      "timeline_start_ms": 54833,
+      "timeline_end_ms": 114333,
+      "speed": 1.0,
+      "word_ids": [
+        "p_0016",
+        "p_0017",
+        "p_0018"
+      ]
+    }
+  ],
+  "audio_segments": [
+    {
+      "segment_id": "a_seg_001",
+      "source_start_ms": 0,
+      "source_end_ms": 10000,
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 10000,
+      "speed": 1.0,
+      "is_muted": false,
+      "is_bleeped": false,
+      "volume": 1.0,
+      "word_ids": [
+        "p_0001",
+        "p_0002",
+        "p_0003",
+        "p_0004",
+        "p_0005",
+        "p_0006",
+        "p_0007",
+        "p_0008"
+      ]
+    },
+    {
+      "segment_id": "a_seg_002",
+      "source_start_ms": 10000,
+      "source_end_ms": 30000,
+      "timeline_start_ms": 10000,
+      "timeline_end_ms": 23333,
+      "speed": 1.5,
+      "is_muted": false,
+      "is_bleeped": false,
+      "volume": 1.0,
+      "word_ids": [
+        "p_0009",
+        "p_0010",
+        "p_0011",
+        "p_0012",
+        "p_0013",
+        "p_0014"
+      ]
+    },
+    {
+      "segment_id": "a_seg_003",
+      "source_start_ms": 30000,
+      "source_end_ms": 61500,
+      "timeline_start_ms": 23333,
+      "timeline_end_ms": 54833,
+      "speed": 1.0,
+      "is_muted": false,
+      "is_bleeped": false,
+      "volume": 1.0,
+      "word_ids": [
+        "p_0015"
+      ]
+    },
+    {
+      "segment_id": "a_seg_004",
+      "source_start_ms": 60500,
+      "source_end_ms": 120000,
+      "timeline_start_ms": 54833,
+      "timeline_end_ms": 114333,
+      "speed": 1.0,
+      "is_muted": false,
+      "is_bleeped": false,
+      "volume": 1.0,
+      "word_ids": [
+        "p_0016",
+        "p_0017",
+        "p_0018"
+      ]
+    }
+  ],
+  "caption_tracks": [],
+  "bgm_tracks": [
+    {
+      "track_id": "bgm_001",
+      "source_url": "bgm.mp3",
+      "volume": 0.3,
+      "ducking_envelope": [
+        {
+          "timeline_ms": 0,
+          "volume_db": 0.0
+        },
+        {
+          "timeline_ms": 2000,
+          "volume_db": -12.0
+        },
+        {
+          "timeline_ms": 3600,
+          "volume_db": 0.0
+        },
+        {
+          "timeline_ms": 5000,
+          "volume_db": -12.0
+        },
+        {
+          "timeline_ms": 6500,
+          "volume_db": 0.0
+        },
+        {
+          "timeline_ms": 13333,
+          "volume_db": -12.0
+        },
+        {
+          "timeline_ms": 14800,
+          "volume_db": 0.0
+        },
+        {
+          "timeline_ms": 53333,
+          "volume_db": -12.0
+        },
+        {
+          "timeline_ms": 56333,
+          "volume_db": 0.0
+        },
+        {
+          "timeline_ms": 84333,
+          "volume_db": -12.0
+        },
+        {
+          "timeline_ms": 84733,
+          "volume_db": 0.0
+        },
+        {
+          "timeline_ms": 109333,
+          "volume_db": -12.0
+        },
+        {
+          "timeline_ms": 110333,
+          "volume_db": 0.0
+        },
+        {
+          "timeline_ms": 114333,
+          "volume_db": 0.0
+        }
+      ]
+    }
+  ],
+  "timeline_hash": "1c47d7f935a2be8df47445690d7fac4d97ead3af41cc9ea6d4190048841b1568",
+  "active_operation_ids": [
+    "op_add_bgm_1_1",
+    "op_speed_2_2"
+  ],
+  "warnings": []
+}

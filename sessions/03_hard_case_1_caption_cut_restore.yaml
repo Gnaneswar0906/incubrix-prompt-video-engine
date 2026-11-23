@@ -1,0 +1,7 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Hard Case 1: Caption Anchoring, Total Cut Suppression & Automatic Return"
+steps:
+  - say: "Add a caption 'Welcome!' when I say welcome to the channel"
+  - say: "Cut the first 45 seconds"
+  - say: "Actually, put the intro back"
+  - say: "Make that caption red"

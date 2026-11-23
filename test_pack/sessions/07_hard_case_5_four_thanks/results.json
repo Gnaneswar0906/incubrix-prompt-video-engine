@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-11-23T01:43:07.914722+00:00",
+  "video": "C:\\Users\\repal\\Downloads\\B-TECH\\Placement\\Incrubrix Software Intern\\test_media\\two_speaker_podcast.mp4",
+  "total_steps": 1,
+  "steps": [
+    {
+      "step": 1,
+      "instruction": "Remove everything after I say thanks",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 121000,
+        "after_duration_ms": 120500,
+        "before_duration_s": 121.0,
+        "after_duration_s": 120.5,
+        "what_moved": "Applied cut. Timeline shortened by 500 ms (121000 ms -> 120500 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_cut_1_1",
+            "op_type": "cut"
+          }
+        ]
+      },
+      "timeline_hash": "874b9943bb736b005ed875c7377741ad861b0c185ba93a7ba70b798cff0e8335",
+      "duration_s": 120.5,
+      "warnings": []
+    }
+  ],
+  "final_timeline_hash": "874b9943bb736b005ed875c7377741ad861b0c185ba93a7ba70b798cff0e8335",
+  "final_duration_s": 120.5,
+  "artifacts": {
+    "results_json": "test_pack\\sessions\\07_hard_case_5_four_thanks\\results.json",
+    "final_timeline_json": "test_pack\\sessions\\07_hard_case_5_four_thanks\\final_timeline.json",
+    "final_timeline_otio": "test_pack\\sessions\\07_hard_case_5_four_thanks\\final_timeline.otio",
+    "manifest_json": "test_pack\\sessions\\07_hard_case_5_four_thanks\\manifest.json",
+    "rendered_mp4": "test_pack\\sessions\\07_hard_case_5_four_thanks\\rendered.mp4"
+  }
+}

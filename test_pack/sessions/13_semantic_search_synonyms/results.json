@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-11-23T01:43:51.070826+00:00",
+  "video": "C:\\Users\\repal\\Downloads\\B-TECH\\Placement\\Incrubrix Software Intern\\test_media\\single_speaker_interview.mp4",
+  "total_steps": 1,
+  "steps": [
+    {
+      "step": 1,
+      "instruction": "Remove the part about pricing",
+      "status": "needs_clarification_resolved",
+      "question": "'Pricing' is mentioned at 1:05, 1:15 and 1:25 - which one, or all?",
+      "options": [
+        "1:05 (words w_0016-w_0016)",
+        "1:15 (words w_0018-w_0018)",
+        "1:25 (words w_0022-w_0022)",
+        "All"
+      ],
+      "supplied_answer": "the first one",
+      "final_status": "applied",
+      "summary": {
+        "before_duration_ms": 90000,
+        "after_duration_ms": 90000,
+        "before_duration_s": 90.0,
+        "after_duration_s": 90.0,
+        "what_moved": "Applied cut. Timeline duration unchanged (90000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_cut_1_1",
+            "op_type": "cut"
+          }
+        ]
+      },
+      "timeline_hash": "c5e5ce5d0745ec5ea9cea97cbc5573b6931f6ce4e1e9aa576f70057b2c1c4816",
+      "duration_s": 90.0,
+      "warnings": []
+    }
+  ],
+  "final_timeline_hash": "c5e5ce5d0745ec5ea9cea97cbc5573b6931f6ce4e1e9aa576f70057b2c1c4816",
+  "final_duration_s": 90.0,
+  "artifacts": {
+    "results_json": "test_pack\\sessions\\13_semantic_search_synonyms\\results.json",
+    "final_timeline_json": "test_pack\\sessions\\13_semantic_search_synonyms\\final_timeline.json",
+    "final_timeline_otio": "test_pack\\sessions\\13_semantic_search_synonyms\\final_timeline.otio",
+    "manifest_json": "test_pack\\sessions\\13_semantic_search_synonyms\\manifest.json",
+    "rendered_mp4": "test_pack\\sessions\\13_semantic_search_synonyms\\rendered.mp4"
+  }
+}

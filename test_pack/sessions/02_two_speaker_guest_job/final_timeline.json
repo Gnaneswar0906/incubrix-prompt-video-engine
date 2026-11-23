@@ -1,0 +1,110 @@
+{
+  "duration_ms": 121000,
+  "duration_s": 121.0,
+  "video_segments": [
+    {
+      "segment_id": "v_seg_001",
+      "source_start_ms": 0,
+      "source_end_ms": 61500,
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 61500,
+      "speed": 1.0,
+      "word_ids": [
+        "p_0001",
+        "p_0002",
+        "p_0003",
+        "p_0004",
+        "p_0005",
+        "p_0006",
+        "p_0007",
+        "p_0008",
+        "p_0009",
+        "p_0010",
+        "p_0011",
+        "p_0012",
+        "p_0013",
+        "p_0014",
+        "p_0015"
+      ]
+    },
+    {
+      "segment_id": "v_seg_002",
+      "source_start_ms": 60500,
+      "source_end_ms": 120000,
+      "timeline_start_ms": 61500,
+      "timeline_end_ms": 121000,
+      "speed": 1.0,
+      "word_ids": [
+        "p_0016",
+        "p_0017",
+        "p_0018"
+      ]
+    }
+  ],
+  "audio_segments": [
+    {
+      "segment_id": "a_seg_001",
+      "source_start_ms": 0,
+      "source_end_ms": 61500,
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 61500,
+      "speed": 1.0,
+      "is_muted": false,
+      "is_bleeped": false,
+      "volume": 1.0,
+      "word_ids": [
+        "p_0001",
+        "p_0002",
+        "p_0003",
+        "p_0004",
+        "p_0005",
+        "p_0006",
+        "p_0007",
+        "p_0008",
+        "p_0009",
+        "p_0010",
+        "p_0011",
+        "p_0012",
+        "p_0013",
+        "p_0014",
+        "p_0015"
+      ]
+    },
+    {
+      "segment_id": "a_seg_002",
+      "source_start_ms": 60500,
+      "source_end_ms": 120000,
+      "timeline_start_ms": 61500,
+      "timeline_end_ms": 121000,
+      "speed": 1.0,
+      "is_muted": false,
+      "is_bleeped": false,
+      "volume": 1.0,
+      "word_ids": [
+        "p_0016",
+        "p_0017",
+        "p_0018"
+      ]
+    }
+  ],
+  "caption_tracks": [
+    {
+      "caption_id": "cap_001",
+      "text": "Host",
+      "timeline_start_ms": 2000,
+      "timeline_end_ms": 2700,
+      "bound_word_ids": [
+        "p_0001"
+      ],
+      "style": {},
+      "suppressed": false
+    }
+  ],
+  "bgm_tracks": [],
+  "timeline_hash": "26778f652b51f9da9b8fa72548f9dc2ec9030156b71a3480047b818103cb8277",
+  "active_operation_ids": [
+    "op_cut_1_1",
+    "op_caption_2_2"
+  ],
+  "warnings": []
+}

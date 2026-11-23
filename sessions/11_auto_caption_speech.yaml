@@ -1,0 +1,5 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Session 11: Auto Caption Generation & Style Updates"
+steps:
+  - say: "Add a caption 'Welcome!' when I say welcome to the channel"
+  - say: "Make that caption red"

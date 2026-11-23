@@ -1,0 +1,104 @@
+{
+  "duration_ms": 90000,
+  "duration_s": 90.0,
+  "video_segments": [
+    {
+      "segment_id": "v_seg_001",
+      "source_start_ms": 0,
+      "source_end_ms": 90000,
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 90000,
+      "speed": 1.0,
+      "word_ids": [
+        "w_0001",
+        "w_0002",
+        "w_0003",
+        "w_0004",
+        "w_0005",
+        "w_0006",
+        "w_0007",
+        "w_0008",
+        "w_0009",
+        "w_0010",
+        "w_0011",
+        "w_0012",
+        "w_0013",
+        "w_0014",
+        "w_0015",
+        "w_0016",
+        "w_0017",
+        "w_0018",
+        "w_0019",
+        "w_0020",
+        "w_0021",
+        "w_0022",
+        "w_0023"
+      ]
+    }
+  ],
+  "audio_segments": [
+    {
+      "segment_id": "a_seg_001",
+      "source_start_ms": 0,
+      "source_end_ms": 90000,
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 90000,
+      "speed": 1.0,
+      "is_muted": false,
+      "is_bleeped": false,
+      "volume": 1.0,
+      "word_ids": [
+        "w_0001",
+        "w_0002",
+        "w_0003",
+        "w_0004",
+        "w_0005",
+        "w_0006",
+        "w_0007",
+        "w_0008",
+        "w_0009",
+        "w_0010",
+        "w_0011",
+        "w_0012",
+        "w_0013",
+        "w_0014",
+        "w_0015",
+        "w_0016",
+        "w_0017",
+        "w_0018",
+        "w_0019",
+        "w_0020",
+        "w_0021",
+        "w_0022",
+        "w_0023"
+      ]
+    }
+  ],
+  "caption_tracks": [
+    {
+      "caption_id": "cap_001",
+      "text": "Welcome!",
+      "timeline_start_ms": 42000,
+      "timeline_end_ms": 44000,
+      "bound_word_ids": [
+        "w_0009",
+        "w_0010",
+        "w_0011",
+        "w_0012"
+      ],
+      "style": {
+        "color": "red"
+      },
+      "suppressed": false
+    }
+  ],
+  "bgm_tracks": [],
+  "timeline_hash": "f691e27e981e132aba9183f34f43f8aa01cb180fabdd455d8fa3d994ed9477a5",
+  "active_operation_ids": [
+    "op_caption_1_1",
+    "op_cut_2_2",
+    "op_restore_op_3_3",
+    "op_style_caption_4_4"
+  ],
+  "warnings": []
+}

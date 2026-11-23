@@ -1,0 +1,64 @@
+{
+  "timestamp": "2026-11-23T01:43:43.148633+00:00",
+  "video": "C:\\Users\\repal\\Downloads\\B-TECH\\Placement\\Incrubrix Software Intern\\test_media\\single_speaker_interview.mp4",
+  "total_steps": 2,
+  "steps": [
+    {
+      "step": 1,
+      "instruction": "Remove all silences",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 90000,
+        "after_duration_ms": 13900,
+        "before_duration_s": 90.0,
+        "after_duration_s": 13.9,
+        "what_moved": "Applied remove_silences. Timeline shortened by 76100 ms (90000 ms -> 13900 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_remove_silences_1_1",
+            "op_type": "remove_silences"
+          }
+        ]
+      },
+      "timeline_hash": "2982a2d99a13055299a56ef835d872e52905e7382dd16b1d4865eab2478971af",
+      "duration_s": 13.9,
+      "warnings": []
+    },
+    {
+      "step": 2,
+      "instruction": "Cut the first 10 seconds",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 13900,
+        "after_duration_ms": 11400,
+        "before_duration_s": 13.9,
+        "after_duration_s": 11.4,
+        "what_moved": "Applied cut. Timeline shortened by 2500 ms (13900 ms -> 11400 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_cut_2_2",
+            "op_type": "cut"
+          }
+        ]
+      },
+      "timeline_hash": "99df5e4c9568b6daecb504b8c63fddb09d5daca87087c10cae324e5e6d363edf",
+      "duration_s": 11.4,
+      "warnings": []
+    }
+  ],
+  "final_timeline_hash": "99df5e4c9568b6daecb504b8c63fddb09d5daca87087c10cae324e5e6d363edf",
+  "final_duration_s": 11.4,
+  "artifacts": {
+    "results_json": "test_pack\\sessions\\12_remove_silences_protected_pause\\results.json",
+    "final_timeline_json": "test_pack\\sessions\\12_remove_silences_protected_pause\\final_timeline.json",
+    "final_timeline_otio": "test_pack\\sessions\\12_remove_silences_protected_pause\\final_timeline.otio",
+    "manifest_json": "test_pack\\sessions\\12_remove_silences_protected_pause\\manifest.json",
+    "rendered_mp4": "test_pack\\sessions\\12_remove_silences_protected_pause\\rendered.mp4"
+  }
+}

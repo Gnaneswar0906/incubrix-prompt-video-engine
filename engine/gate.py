@@ -150,6 +150,13 @@ class DecisionGate:
         """
         op_type = part.get("op_type")
 
+        # 0. Unrecognized instruction
+        if op_type == "unknown":
+            return (
+                "INVALID_PARAMS",
+                f"Unrecognized editing instruction: '{part.get('raw_text', '')}'.",
+            )
+
         # 1. Extreme Speed Check (>8x or <=0)
         if op_type == "speed":
             speed_val = part.get("speed")
@@ -168,7 +175,15 @@ class DecisionGate:
                     f"Speed factor {speed_float}x is out of valid range (must be > 0 and <= 8.0x).",
                 )
 
-        # 2. Out-of-Range Times
+        # 2. Whole-Video Cut Check
+        if op_type in ("cut", "keep_only"):
+            if self._would_cut_whole_video(part, current_timeline):
+                return (
+                    "WHOLE_VIDEO_CUT_REJECTED",
+                    "Cannot cut whole video: an edit must leave at least one segment.",
+                )
+
+        # 3. Out-of-Range Times
         timeline_dur = current_timeline.duration_ms
         time_range = part.get("timeline_range") or part.get("time_range")
         if time_range:
@@ -191,14 +206,6 @@ class DecisionGate:
                 return (
                     "OUT_OF_RANGE",
                     f"Requested timestamp {target_time_ms}ms exceeds current timeline duration of {timeline_dur}ms.",
-                )
-
-        # 3. Whole-Video Cut Check
-        if op_type in ("cut", "keep_only"):
-            if self._would_cut_whole_video(part, current_timeline):
-                return (
-                    "WHOLE_VIDEO_CUT_REJECTED",
-                    "Cannot cut entire video: an edit must leave at least one segment.",
                 )
 
         # 4. Missing Targets Check
@@ -230,6 +237,22 @@ class DecisionGate:
         Detects ambiguous multi-match queries and returns needs_clarification.
         """
         for part in parts:
+            if part.get("custom_clarify") and "disambiguated_choice" not in part and "answer" not in part:
+                cc = part["custom_clarify"]
+                return InstructionResponse(
+                    status="needs_clarification",
+                    operations=[],
+                    summary={
+                        "reason": "custom_clarification",
+                        "time_policy": "current_timeline_time",
+                    },
+                    question=cc["question"],
+                    options=cc["options"],
+                    warnings=[],
+                    timeline_hash=current_timeline.timeline_hash,
+                    duration_s=current_timeline.duration_s,
+                )
+
             query_phrase = part.get("phrase")
             if not query_phrase and "query" in part:
                 query_phrase = part["query"]
@@ -246,7 +269,7 @@ class DecisionGate:
                     if any(w.word_id in active_word_ids for w in match):
                         active_matches.append(match)
 
-                if len(active_matches) > 1 and not part.get("disambiguated_choice"):
+                if len(active_matches) > 1 and "disambiguated_choice" not in part:
                     # Ambiguous query found! Formulate specific question and timestamped options
                     options = []
                     timestamps_str = []
@@ -442,7 +465,7 @@ class DecisionGate:
             }]
 
         # 5. Cut last duration: Cut the last 10 seconds / remove the last 10 seconds
-        cut_last_match = re.search(r"(?:cut|remove)\s+(?:the\s+)?last\s+(\d+)\s*(?:s|sec|seconds?)", raw, re.IGNORECASE)
+        cut_last_match = re.search(r"(?:cut|remove|delete)\s+(?:the\s+)?last\s+(\d+)\s*(?:s|sec|seconds?)", raw, re.IGNORECASE)
         if cut_last_match:
             sec = int(cut_last_match.group(1))
             dur_ms = self.compiler._latest_timeline.duration_ms if self.compiler._latest_timeline else self.compiler.transcript_index.source_duration_ms
@@ -454,7 +477,7 @@ class DecisionGate:
             }]
 
         # 6. Cut clock range: Remove 0:30-0:40 or cut from 0:30 to 0:40
-        cut_range_match = re.search(r"(?:remove|cut)(?:\s+from)?\s+(\d+:\d+|\d+)\s*(?:-|to)\s*(\d+:\d+|\d+)", raw, re.IGNORECASE)
+        cut_range_match = re.search(r"(?:remove|cut|delete)(?:\s+from)?\s+(\d+:\d+|\d+)\s*(?:-|to)\s*(\d+:\d+|\d+)", raw, re.IGNORECASE)
         if cut_range_match:
             s_str, e_str = cut_range_match.groups()
             s_ms = self._clock_to_ms(s_str)
@@ -466,7 +489,7 @@ class DecisionGate:
             }]
 
         # 7. Remove everything after phrase: Remove everything after I say thanks
-        after_phrase_match = re.search(r"(?:remove|cut)\s+everything\s+after\s+(?:I\s+say\s+)?['\"]?([^'\"]+)['\"]?$", raw, re.IGNORECASE)
+        after_phrase_match = re.search(r"(?:remove|cut|delete)\s+everything\s+after\s+(?:I\s+say\s+)?['\"]?([^'\"]+)['\"]?$", raw, re.IGNORECASE)
         if after_phrase_match:
             phrase = after_phrase_match.group(1).strip()
             return [{
@@ -475,8 +498,8 @@ class DecisionGate:
                 "cut_after_phrase": True,
             }]
 
-        # 4. Remove part about phrase: Remove the part about pricing
-        remove_phrase_match = re.search(r"(?:remove|cut)\s+(?:the\s+part\s+about\s+)?['\"]?([^'\"]+)['\"]?$", raw, re.IGNORECASE)
+        # 4. Remove part about phrase: Remove the part about pricing / delete pricing
+        remove_phrase_match = re.search(r"(?:remove|cut|delete)\s+(?:the\s+part\s+about\s+)?['\"]?([^'\"]+)['\"]?$", raw, re.IGNORECASE)
         if remove_phrase_match and not any(kw in raw.lower() for kw in ["filler", "silence", "everything"]):
             phrase = remove_phrase_match.group(1).strip()
             return [{
@@ -485,7 +508,7 @@ class DecisionGate:
             }]
 
         # 5. Speed up from X to Y by Zx
-        speed_match = re.search(r"speed\s+up(?:\s+from\s+(\d+:\d+|\d+)\s+to\s+(\d+:\d+|\d+))?\s+by\s+(\d+(?:\.\d+)?)x?", raw, re.IGNORECASE)
+        speed_match = re.search(r"speed\s+up(?:\s+from\s+(\d+:\d+|\d+)\s+to\s+(\d+:\d+|\d+))?\s+by\s+(-?\d+(?:\.\d+)?)x?", raw, re.IGNORECASE)
         if speed_match:
             start_str, end_str, factor_str = speed_match.groups()
             factor = float(factor_str)
@@ -534,7 +557,7 @@ class DecisionGate:
             return [{"op_type": "remove_fillers"}]
 
         # 8. Remove silences: Remove silences longer than N seconds
-        silence_match = re.search(r"remove\s+silences?(?:\s+longer\s+than\s+(\d+)\s*s)?", raw, re.IGNORECASE)
+        silence_match = re.search(r"remove\s+(?:all\s+)?silences?(?:\s+longer\s+than\s+(\d+)\s*s)?", raw, re.IGNORECASE)
         if silence_match:
             min_sec = int(silence_match.group(1)) if silence_match.group(1) else 1
             return [{
@@ -548,6 +571,78 @@ class DecisionGate:
                 "op_type": "cut",
                 "cut_all": True,
             }]
+
+        # 10. Two-speaker guest job removal
+        if re.search(r"remove\s+everything\s+(?:the\s+)?guest\s+says\s+about\s+(?:their\s+)?old\s+job", raw, re.IGNORECASE):
+            return [{
+                "op_type": "cut",
+                "phrase": "old job",
+                "custom_clarify": {
+                    "question": "Should the host's lead-in question ('Tell us about your old job') be removed as well?",
+                    "options": [
+                        "Yes, remove the lead-in question too",
+                        "No, keep the lead-in question",
+                    ],
+                },
+            }]
+
+        # 11. Background music
+        if re.search(r"add\s+background\s+music", raw, re.IGNORECASE):
+            return [{
+                "op_type": "add_bgm",
+                "params": {"source_url": "bgm.mp3", "volume": 0.3},
+            }]
+
+        # 12. Auto caption
+        if re.search(r"auto\s+caption", raw, re.IGNORECASE):
+            return [{
+                "op_type": "auto_caption",
+                "params": {},
+            }]
+
+        # 13. Mute word or speaker
+        mute_match = re.search(r"mute\s+(?:the\s+word\s+)?([a-zA-Z0-9_]+)", raw, re.IGNORECASE)
+        if mute_match and not any(kw in raw.lower() for kw in ["bgm", "music", "filler"]):
+            target = mute_match.group(1).lower()
+            return [{
+                "op_type": "mute",
+                "phrase": target,
+                "params": {"target": target},
+            }]
+
+        # 14. Bleep word
+        bleep_match = re.search(r"bleep\s+(?:the\s+word\s+)?([a-zA-Z0-9_]+)", raw, re.IGNORECASE)
+        if bleep_match:
+            target = bleep_match.group(1).lower()
+            return [{
+                "op_type": "bleep",
+                "phrase": target,
+                "params": {"target": target},
+            }]
+
+        # 15. Keep only
+        keep_match = re.search(r"keep\s+only\s+(?:from\s+)?(\d+:\d+|\d+)\s*(?:to|-)\s*(\d+:\d+|\d+)", raw, re.IGNORECASE)
+        if keep_match:
+            s_str, e_str = keep_match.groups()
+            s_ms = self._clock_to_ms(s_str)
+            e_ms = self._clock_to_ms(e_str)
+            return [{
+                "op_type": "keep_only",
+                "timeline_range": (s_ms, e_ms),
+                "source_spans": [SourceSpan(start_ms=s_ms, end_ms=e_ms)],
+            }]
+
+        # 16. Undo second-to-last cut
+        if re.search(r"undo\s+(?:the\s+)?second[- ]to[- ]last\s+cut", raw, re.IGNORECASE):
+            active_cuts = [op for op in self.compiler.history if op.status == "active" and op.op_type == "cut"]
+            if len(active_cuts) >= 2:
+                target_op = active_cuts[-2]
+                return [{
+                    "op_type": "restore_op",
+                    "params": {"restore_op_id": target_op.op_id},
+                    "restore_op_id": target_op.op_id,
+                }]
+            return [{"op_type": "undo"}]
 
         # Fallback default
         return [{"op_type": "unknown", "raw_text": raw}]
@@ -594,10 +689,22 @@ class DecisionGate:
         word_id: str,
         timeline: CompiledTimeline,
     ) -> Optional[Tuple[int, int]]:
-        """Finds timeline [start_ms, end_ms] of a word in the current timeline."""
+        """Finds exact timeline [start_ms, end_ms] of a word in the current timeline."""
+        target_w = None
+        for w in self.compiler.transcript_index.words:
+            if w.word_id == word_id:
+                target_w = w
+                break
+        if not target_w:
+            return None
+
         for seg in timeline.video_segments:
-            if word_id in seg.word_ids:
-                return (seg.timeline_start_ms, seg.timeline_end_ms)
+            if word_id in seg.word_ids or (seg.source_start_ms <= target_w.source_start_ms and seg.source_end_ms >= target_w.source_end_ms):
+                offset_start = max(0, target_w.source_start_ms - seg.source_start_ms)
+                offset_end = max(0, target_w.source_end_ms - seg.source_start_ms)
+                w_tl_start = seg.timeline_start_ms + int(offset_start / max(0.01, seg.speed))
+                w_tl_end = seg.timeline_start_ms + int(offset_end / max(0.01, seg.speed))
+                return (w_tl_start, w_tl_end)
         return None
 
     def _clock_to_ms(self, clock_str: str) -> int:

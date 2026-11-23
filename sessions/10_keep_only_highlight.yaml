@@ -1,0 +1,5 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Session 10: Keep Only Operation for Highlight Clipping"
+steps:
+  - say: "Keep only from 0:40 to 1:10"
+  - say: "Add a caption 'Highlights' when I say welcome"

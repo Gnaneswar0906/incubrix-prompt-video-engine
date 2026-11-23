@@ -1,0 +1,5 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Session 13: Semantic Search Synonym Matching ('cost' -> 'pricing')"
+steps:
+  - say: "Remove the part about pricing"
+    answer: "the first one"

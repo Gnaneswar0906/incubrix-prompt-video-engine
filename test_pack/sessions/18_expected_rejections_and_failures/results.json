@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-11-23T01:44:27.696073+00:00",
+  "video": "C:\\Users\\repal\\Downloads\\B-TECH\\Placement\\Incrubrix Software Intern\\test_media\\single_speaker_interview.mp4",
+  "total_steps": 4,
+  "steps": [
+    {
+      "step": 1,
+      "instruction": "Cut everything",
+      "status": "rejected",
+      "summary": {
+        "error_code": "WHOLE_VIDEO_CUT_REJECTED",
+        "message": "Cannot cut entire video: an edit must leave at least one segment.",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "rejected",
+            "code": "WHOLE_VIDEO_CUT_REJECTED",
+            "message": "Cannot cut entire video: an edit must leave at least one segment."
+          }
+        ],
+        "time_policy": "current_timeline_time"
+      },
+      "timeline_hash": "c5e5ce5d0745ec5ea9cea97cbc5573b6931f6ce4e1e9aa576f70057b2c1c4816",
+      "duration_s": 90.0,
+      "warnings": [
+        "Part 1 rejected: Cannot cut entire video: an edit must leave at least one segment. (WHOLE_VIDEO_CUT_REJECTED)"
+      ]
+    },
+    {
+      "step": 2,
+      "instruction": "Speed up by 0x",
+      "status": "rejected",
+      "summary": {
+        "error_code": "EXTREME_SPEED_REJECTED",
+        "message": "Speed factor 0.0x is out of valid range (must be > 0 and <= 8.0x).",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "rejected",
+            "code": "EXTREME_SPEED_REJECTED",
+            "message": "Speed factor 0.0x is out of valid range (must be > 0 and <= 8.0x)."
+          }
+        ],
+        "time_policy": "current_timeline_time"
+      },
+      "timeline_hash": "c5e5ce5d0745ec5ea9cea97cbc5573b6931f6ce4e1e9aa576f70057b2c1c4816",
+      "duration_s": 90.0,
+      "warnings": [
+        "Part 1 rejected: Speed factor 0.0x is out of valid range (must be > 0 and <= 8.0x). (EXTREME_SPEED_REJECTED)"
+      ]
+    },
+    {
+      "step": 3,
+      "instruction": "Make that caption bigger",
+      "status": "rejected",
+      "summary": {
+        "error_code": "MISSING_TARGET",
+        "message": "No active caption exists to modify. Add a caption first.",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "rejected",
+            "code": "MISSING_TARGET",
+            "message": "No active caption exists to modify. Add a caption first."
+          }
+        ],
+        "time_policy": "current_timeline_time"
+      },
+      "timeline_hash": "c5e5ce5d0745ec5ea9cea97cbc5573b6931f6ce4e1e9aa576f70057b2c1c4816",
+      "duration_s": 90.0,
+      "warnings": [
+        "Part 1 rejected: No active caption exists to modify. Add a caption first. (MISSING_TARGET)"
+      ]
+    },
+    {
+      "step": 4,
+      "instruction": "Add a caption at 10:00",
+      "status": "rejected",
+      "summary": {
+        "error_code": "OUT_OF_RANGE",
+        "message": "Requested timestamp 600000ms exceeds current timeline duration of 90000ms.",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "rejected",
+            "code": "OUT_OF_RANGE",
+            "message": "Requested timestamp 600000ms exceeds current timeline duration of 90000ms."
+          }
+        ],
+        "time_policy": "current_timeline_time"
+      },
+      "timeline_hash": "c5e5ce5d0745ec5ea9cea97cbc5573b6931f6ce4e1e9aa576f70057b2c1c4816",
+      "duration_s": 90.0,
+      "warnings": [
+        "Part 1 rejected: Requested timestamp 600000ms exceeds current timeline duration of 90000ms. (OUT_OF_RANGE)"
+      ]
+    }
+  ],
+  "final_timeline_hash": "c5e5ce5d0745ec5ea9cea97cbc5573b6931f6ce4e1e9aa576f70057b2c1c4816",
+  "final_duration_s": 90.0,
+  "artifacts": {
+    "results_json": "test_pack\\sessions\\18_expected_rejections_and_failures\\results.json",
+    "final_timeline_json": "test_pack\\sessions\\18_expected_rejections_and_failures\\final_timeline.json",
+    "final_timeline_otio": "test_pack\\sessions\\18_expected_rejections_and_failures\\final_timeline.otio",
+    "manifest_json": "test_pack\\sessions\\18_expected_rejections_and_failures\\manifest.json",
+    "rendered_mp4": "test_pack\\sessions\\18_expected_rejections_and_failures\\rendered.mp4"
+  }
+}

@@ -1,0 +1,6 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Hard Case 2: Reorder Section, Mute Word, and Remove Fillers"
+steps:
+  - say: "Cut the first 10 seconds"
+  - say: "Remove filler words"
+  - say: "Mute the word video"

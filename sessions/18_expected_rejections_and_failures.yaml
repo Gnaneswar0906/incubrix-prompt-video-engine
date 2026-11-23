@@ -1,0 +1,7 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Session 18: Expected Rejections and Failure Cases (Deliberate Audit Pack)"
+steps:
+  - say: "Cut everything"
+  - say: "Speed up by 0x"
+  - say: "Make that caption bigger"
+  - say: "Add a caption at 10:00"

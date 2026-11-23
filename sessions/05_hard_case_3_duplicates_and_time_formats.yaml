@@ -1,0 +1,7 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Hard Case 3: Duplicate Cuts, Out of Range, and Natural Time Formats"
+steps:
+  - say: "Remove 0:30-0:40"
+  - say: "Remove 0:30-0:40"
+  - say: "Add a caption at 5:00"
+  - say: "Cut the last 10 seconds"

@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-11-23T01:42:41.918143+00:00",
+  "video": "C:\\Users\\repal\\Downloads\\B-TECH\\Placement\\Incrubrix Software Intern\\test_media\\single_speaker_interview.mp4",
+  "total_steps": 3,
+  "steps": [
+    {
+      "step": 1,
+      "instruction": "Cut the first 10 seconds",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 90000,
+        "after_duration_ms": 80000,
+        "before_duration_s": 90.0,
+        "after_duration_s": 80.0,
+        "what_moved": "Applied cut. Timeline shortened by 10000 ms (90000 ms -> 80000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_cut_1_1",
+            "op_type": "cut"
+          }
+        ]
+      },
+      "timeline_hash": "9a8d23d1a50a8fe5604d0c629ade3e4596e0f6b1440ab7873f1f3dcf1308101d",
+      "duration_s": 80.0,
+      "warnings": []
+    },
+    {
+      "step": 2,
+      "instruction": "Remove filler words",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 80000,
+        "after_duration_ms": 78700,
+        "before_duration_s": 80.0,
+        "after_duration_s": 78.7,
+        "what_moved": "Applied remove_fillers. Timeline shortened by 1300 ms (80000 ms -> 78700 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_remove_fillers_2_2",
+            "op_type": "remove_fillers"
+          }
+        ]
+      },
+      "timeline_hash": "fe3df1428789f47d9775057b84788815620761fa81af149b5f685a606b6ce5a3",
+      "duration_s": 78.7,
+      "warnings": []
+    },
+    {
+      "step": 3,
+      "instruction": "Mute the word video",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 78700,
+        "after_duration_ms": 78700,
+        "before_duration_s": 78.7,
+        "after_duration_s": 78.7,
+        "what_moved": "Applied mute. Timeline duration unchanged (78700 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_mute_3_3",
+            "op_type": "mute"
+          }
+        ]
+      },
+      "timeline_hash": "fe3df1428789f47d9775057b84788815620761fa81af149b5f685a606b6ce5a3",
+      "duration_s": 78.7,
+      "warnings": []
+    }
+  ],
+  "final_timeline_hash": "fe3df1428789f47d9775057b84788815620761fa81af149b5f685a606b6ce5a3",
+  "final_duration_s": 78.7,
+  "artifacts": {
+    "results_json": "test_pack\\sessions\\04_hard_case_2_reorder_mute_filler\\results.json",
+    "final_timeline_json": "test_pack\\sessions\\04_hard_case_2_reorder_mute_filler\\final_timeline.json",
+    "final_timeline_otio": "test_pack\\sessions\\04_hard_case_2_reorder_mute_filler\\final_timeline.otio",
+    "manifest_json": "test_pack\\sessions\\04_hard_case_2_reorder_mute_filler\\manifest.json",
+    "rendered_mp4": "test_pack\\sessions\\04_hard_case_2_reorder_mute_filler\\rendered.mp4"
+  }
+}

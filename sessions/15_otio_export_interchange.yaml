@@ -1,0 +1,6 @@
+video: "test_media/single_speaker_interview.mp4"
+title: "Session 15: OpenTimelineIO (.otio) Interchange Export"
+steps:
+  - say: "Add a caption 'Export Validation' when I say welcome to the channel"
+  - say: "Cut the first 20 seconds"
+  - say: "Speed up from 0:30 to 0:50 by 2x"
