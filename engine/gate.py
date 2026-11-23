@@ -119,6 +119,8 @@ class DecisionGate:
         summary: Dict[str, Any] = {
             "before_duration_ms": before_dur_ms,
             "after_duration_ms": after_dur_ms,
+            "before_duration_s": round(before_dur_ms / 1000.0, 3),
+            "after_duration_s": round(after_dur_ms / 1000.0, 3),
             "what_moved": what_moved,
             "time_policy": "current_timeline_time",
             "per_part_results": per_part_results,

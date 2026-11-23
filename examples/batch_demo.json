@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Worked Example Session (Prompt 1 Flow)",
+    "video_url": "https://example.com/interview.mp4",
+    "instructions": [
+      {
+        "say": "Cut the first 30 seconds"
+      },
+      {
+        "say": "Cut pricing",
+        "answer": "the second one"
+      },
+      {
+        "say": "Undo"
+      }
+    ]
+  }
+]

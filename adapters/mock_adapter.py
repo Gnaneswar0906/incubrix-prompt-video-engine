@@ -24,7 +24,35 @@ class MockSTTVADAdapter(STTVADAdapter):
     """
 
     def __init__(self, synthetic_words: Optional[List[WordToken]] = None):
-        self.synthetic_words = synthetic_words or []
+        if synthetic_words is not None:
+            self.synthetic_words = synthetic_words
+        else:
+            # Default realistic transcript (120s) with 3 pricing mentions, fillers, and pauses
+            self.synthetic_words = [
+                WordToken(word_id="w_0001", text="hello", source_start_ms=5000, source_end_ms=5500, speaker_id="speaker_0"),
+                WordToken(word_id="w_0002", text="and", source_start_ms=5500, source_end_ms=5800, speaker_id="speaker_0"),
+                WordToken(word_id="w_0003", text="start", source_start_ms=5800, source_end_ms=6400, speaker_id="speaker_0"),
+                WordToken(word_id="w_0004", text="our", source_start_ms=6400, source_end_ms=6800, speaker_id="speaker_0"),
+                WordToken(word_id="w_0005", text="video", source_start_ms=6800, source_end_ms=7500, speaker_id="speaker_0"),
+                WordToken(word_id="w_0006", text="um", source_start_ms=15000, source_end_ms=15500, speaker_id="speaker_0", is_filler=True),
+                WordToken(word_id="w_0017", text="welcome", source_start_ms=42000, source_end_ms=42500, speaker_id="speaker_0"),
+                WordToken(word_id="w_0018", text="to", source_start_ms=42500, source_end_ms=42800, speaker_id="speaker_0"),
+                WordToken(word_id="w_0019", text="the", source_start_ms=42800, source_end_ms=43100, speaker_id="speaker_0"),
+                WordToken(word_id="w_0020", text="channel", source_start_ms=43100, source_end_ms=44000, speaker_id="speaker_0"),
+                WordToken(word_id="w_0021", text="pause", source_start_ms=44500, source_end_ms=45000, speaker_id="speaker_0", is_protected_silence=True),
+                WordToken(word_id="w_0022", text="afterpause", source_start_ms=47500, source_end_ms=48500, speaker_id="speaker_0"),
+                WordToken(word_id="w_0023", text="beforegap", source_start_ms=49000, source_end_ms=50000, speaker_id="speaker_0"),
+                WordToken(word_id="w_0024", text="aftergap", source_start_ms=52500, source_end_ms=53500, speaker_id="speaker_0"),
+                WordToken(word_id="w_0007", text="the", source_start_ms=64500, source_end_ms=64900, speaker_id="speaker_0"),
+                WordToken(word_id="w_0008", text="pricing", source_start_ms=65000, source_end_ms=65800, speaker_id="speaker_0"),
+                WordToken(word_id="w_0009", text="our", source_start_ms=74500, source_end_ms=74900, speaker_id="speaker_0"),
+                WordToken(word_id="w_0010", text="pricing", source_start_ms=75000, source_end_ms=75800, speaker_id="speaker_0"),
+                WordToken(word_id="w_0011", text="tier", source_start_ms=75900, source_end_ms=76500, speaker_id="speaker_0"),
+                WordToken(word_id="w_0012", text="uh", source_start_ms=76600, source_end_ms=77000, speaker_id="speaker_0", is_filler=True),
+                WordToken(word_id="w_0013", text="final", source_start_ms=84500, source_end_ms=84900, speaker_id="speaker_0"),
+                WordToken(word_id="w_0014", text="pricing", source_start_ms=85000, source_end_ms=85800, speaker_id="speaker_0"),
+                WordToken(word_id="w_0025", text="goodbye", source_start_ms=115000, source_end_ms=116000, speaker_id="speaker_0"),
+            ]
 
     def transcribe(
         self,
