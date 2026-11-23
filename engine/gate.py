@@ -492,9 +492,18 @@ class DecisionGate:
             if start_str and end_str:
                 s_ms = self._clock_to_ms(start_str)
                 e_ms = self._clock_to_ms(end_str)
+                target_range = (s_ms, e_ms)
+                # Check if range refers to source media time (due to earlier cuts shortening timeline)
+                tl = self.compiler._latest_timeline
+                if tl and e_ms > tl.duration_ms and s_ms < self.compiler.transcript_index.source_duration_ms:
+                    overlap_starts = [seg.timeline_start_ms for seg in tl.video_segments if seg.source_end_ms > s_ms and seg.source_start_ms < e_ms]
+                    overlap_ends = [seg.timeline_end_ms for seg in tl.video_segments if seg.source_end_ms > s_ms and seg.source_start_ms < e_ms]
+                    if overlap_starts and overlap_ends:
+                        target_range = (min(overlap_starts), max(overlap_ends))
+
                 return [{
                     "op_type": "speed",
-                    "timeline_range": (s_ms, e_ms),
+                    "timeline_range": target_range,
                     "source_spans": [SourceSpan(start_ms=s_ms, end_ms=e_ms)],
                     "speed": factor,
                     "params": {"speed": factor},

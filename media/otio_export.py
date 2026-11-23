@@ -20,13 +20,14 @@ def export_to_otio(
     output_path: str,
     source_media_path: Optional[str] = None,
     fps: float = 30.0,
+    media_reference_path: Optional[str] = None,
 ) -> str:
     """
     Exports CompiledTimeline into a standardized OpenTimelineIO (.otio) project file.
     Includes Video Track, Audio Track, BGM Track, and Caption Markers.
     """
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
-    media_url = source_media_path or "source_video.mp4"
+    media_url = source_media_path or media_reference_path or "source_video.mp4"
 
     try:
         import opentimelineio as otio

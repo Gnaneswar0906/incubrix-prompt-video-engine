@@ -1,0 +1,193 @@
+{
+  "timestamp": "2026-11-23T01:08:30.643298+00:00",
+  "video": "C:\\Users\\repal\\Downloads\\B-TECH\\Placement\\Incrubrix Software Intern\\test_media\\single_speaker_interview.mp4",
+  "total_steps": 7,
+  "steps": [
+    {
+      "step": 1,
+      "instruction": "Add a caption 'Welcome!' when I say welcome to the channel",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 90000,
+        "after_duration_ms": 90000,
+        "before_duration_s": 90.0,
+        "after_duration_s": 90.0,
+        "what_moved": "Applied caption. Timeline duration unchanged (90000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_caption_1_1",
+            "op_type": "caption"
+          }
+        ]
+      },
+      "timeline_hash": "10a9d89eb0593acb2928d69c116c329ea05eb630de4b5c9203776b15cc30363c",
+      "duration_s": 90.0,
+      "warnings": []
+    },
+    {
+      "step": 2,
+      "instruction": "Cut the first 30 seconds",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 90000,
+        "after_duration_ms": 60000,
+        "before_duration_s": 90.0,
+        "after_duration_s": 60.0,
+        "what_moved": "Applied cut. Timeline shortened by 30000 ms (90000 ms -> 60000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_cut_2_2",
+            "op_type": "cut"
+          }
+        ]
+      },
+      "timeline_hash": "7c0d4b27ef64634733b611a35cf329e82d42d43e2b4ce3bbecf1330cd10b6c97",
+      "duration_s": 60.0,
+      "warnings": []
+    },
+    {
+      "step": 3,
+      "instruction": "Remove the part about pricing",
+      "status": "needs_clarification_resolved",
+      "question": "'Pricing' is mentioned at 0:00, 0:00 and 0:00 - which one, or all?",
+      "options": [
+        "0:00 (words w_0016-w_0016)",
+        "0:00 (words w_0018-w_0018)",
+        "0:00 (words w_0022-w_0022)",
+        "All"
+      ],
+      "supplied_answer": "the second one",
+      "final_status": "applied",
+      "summary": {
+        "before_duration_ms": 60000,
+        "after_duration_ms": 60000,
+        "before_duration_s": 60.0,
+        "after_duration_s": 60.0,
+        "what_moved": "Applied cut. Timeline duration unchanged (60000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_cut_3_3",
+            "op_type": "cut"
+          }
+        ]
+      },
+      "timeline_hash": "7c0d4b27ef64634733b611a35cf329e82d42d43e2b4ce3bbecf1330cd10b6c97",
+      "duration_s": 60.0,
+      "warnings": []
+    },
+    {
+      "step": 4,
+      "instruction": "Speed up from 1:00 to 1:30 by 2x",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 60000,
+        "after_duration_ms": 45000,
+        "before_duration_s": 60.0,
+        "after_duration_s": 45.0,
+        "what_moved": "Applied speed. Timeline shortened by 15000 ms (60000 ms -> 45000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_speed_4_4",
+            "op_type": "speed"
+          }
+        ]
+      },
+      "timeline_hash": "a6eb38bd74385b16997335d3f57547392a46a68b6f481f65176cf4edd5d83e67",
+      "duration_s": 45.0,
+      "warnings": []
+    },
+    {
+      "step": 5,
+      "instruction": "Actually, put the intro back",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 45000,
+        "after_duration_ms": 75000,
+        "before_duration_s": 45.0,
+        "after_duration_s": 75.0,
+        "what_moved": "Applied restore_op. Timeline extended by 30000 ms (45000 ms -> 75000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_restore_op_5_5",
+            "op_type": "restore_op"
+          }
+        ]
+      },
+      "timeline_hash": "a71b9f38d05efb35af1d33b63f26d84735987ffba92f7c2ec79b5a755df4554c",
+      "duration_s": 75.0,
+      "warnings": []
+    },
+    {
+      "step": 6,
+      "instruction": "Undo",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 75000,
+        "after_duration_ms": 45000,
+        "before_duration_s": 75.0,
+        "after_duration_s": 45.0,
+        "what_moved": "Applied undo. Timeline shortened by 30000 ms (75000 ms -> 45000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_undo_6_6",
+            "op_type": "undo"
+          }
+        ]
+      },
+      "timeline_hash": "a6eb38bd74385b16997335d3f57547392a46a68b6f481f65176cf4edd5d83e67",
+      "duration_s": 45.0,
+      "warnings": []
+    },
+    {
+      "step": 7,
+      "instruction": "Make that caption red",
+      "status": "applied",
+      "summary": {
+        "before_duration_ms": 45000,
+        "after_duration_ms": 45000,
+        "before_duration_s": 45.0,
+        "after_duration_s": 45.0,
+        "what_moved": "Applied style_caption. Timeline duration unchanged (45000 ms).",
+        "time_policy": "current_timeline_time",
+        "per_part_results": [
+          {
+            "part": 1,
+            "status": "applied",
+            "op_id": "op_style_caption_7_6",
+            "op_type": "style_caption"
+          }
+        ]
+      },
+      "timeline_hash": "8fd0974be99db287748f759c15dd62b09c7a075a5937a5ba93dd78a0c78f838d",
+      "duration_s": 45.0,
+      "warnings": []
+    }
+  ],
+  "final_timeline_hash": "8fd0974be99db287748f759c15dd62b09c7a075a5937a5ba93dd78a0c78f838d",
+  "final_duration_s": 45.0,
+  "artifacts": {
+    "results_json": "./data/session_outputs\\results.json",
+    "final_timeline_json": "./data/session_outputs\\final_timeline.json",
+    "final_timeline_otio": "./data/session_outputs\\final_timeline.otio",
+    "manifest_json": "./data/session_outputs\\manifest.json",
+    "rendered_mp4": "./data/session_outputs\\rendered.mp4"
+  }
+}

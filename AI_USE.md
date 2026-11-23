@@ -1,6 +1,6 @@
 # AI Tooling and Disclosure (AI_USE.md)
 
-In compliance with the IncuBrix Engineering Assessment standards, this document discloses all AI tools, models, and assistants utilized during the architecture, design, and implementation of Prompts 1, 2, and 3.
+In compliance with the IncuBrix Engineering Assessment standards, this document discloses all AI tools, models, and assistants utilized during the architecture, design, and implementation of Prompts 1, 2, 3, and 4.
 
 ## 1. AI Coding Assistants Used
 
@@ -12,7 +12,10 @@ In compliance with the IncuBrix Engineering Assessment standards, this document 
   - Implementing OpenTimelineIO (.otio) export adapter (`media/otio_export.py`).
   - Architecting the containerized HTTP API service with FastAPI, background queue abstractions, and SQLite persistence (`service/app.py`).
   - Designing dual-mode deployment configurations for Docker Compose and Single-Container Cloud (`Dockerfile`, `docker-compose.yml`, `.env.example`).
-  - Scaffolding the unit and integration test suites (`tests/test_compiler.py`, `tests/test_render_sync.py`, `tests/test_api_integration.py`).
+  - Designing and implementing the interactive dark-mode Web Studio interface (`static/index.html`, `static/styles.css`, `static/app.js`).
+  - Implementing the CLI session runner for headless YAML/JSON pipeline execution (`cli/session_runner.py`).
+  - Authoring the synthetic test media generation suite (`scripts/generate_test_media.py`).
+  - Scaffolding the unit and integration test suites (`tests/test_compiler.py`, `tests/test_render_sync.py`, `tests/test_api_integration.py`, `tests/test_studio_and_cli.py`).
 * **Human Oversight & Code Verification**:
-  - The deterministic timeline compiler logic, atom slicing at span boundaries, filtergraph atempo chaining, idempotency replay caching, HMAC-SHA256 signature generation, and non-destructive `restore_op` mechanisms were designed, analyzed, debugged, and verified through interactive unit testing.
-  - All 46 tests across unit, media sync, and API integration run locally via `pytest` with 100% pass verification.
+  - The deterministic timeline compiler logic, atom slicing at span boundaries, filtergraph atempo chaining, idempotency replay caching, HMAC-SHA256 signature generation, word-anchored visualizer mapping, and non-destructive `restore_op` mechanisms were designed, analyzed, debugged, and verified through interactive unit and browser testing.
+  - All 53 tests across unit, media sync, API integration, studio UI, and CLI runner execute locally via `pytest` with 100% pass verification.

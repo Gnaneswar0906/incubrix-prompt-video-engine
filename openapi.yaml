@@ -29,6 +29,19 @@ paths:
           content:
             application/json:
               schema: {}
+  /api/v1/samples:
+    get:
+      tags:
+      - Sessions
+      summary: List Sample Media
+      description: Returns list of built-in synthetic test media clips.
+      operationId: list_sample_media_api_v1_samples_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
   /api/v1/sessions:
     post:
       tags:

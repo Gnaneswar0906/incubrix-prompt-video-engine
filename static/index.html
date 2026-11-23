@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IncuBrix Studio | Prompt-Based Video Editing</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+  <div class="app-layout">
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="brand-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6C4 4.89543 4.89543 4 6 4H18C19.1046 4 20 4.89543 20 6V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V6Z" stroke="url(#paint0_linear)" stroke-width="2"/>
+            <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="url(#paint1_linear)"/>
+            <defs>
+              <linearGradient id="paint0_linear" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#38BDF8"/>
+                <stop offset="1" stop-color="#818CF8"/>
+              </linearGradient>
+              <linearGradient id="paint1_linear" x1="10" y1="8.5" x2="16" y2="15.5" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#38BDF8"/>
+                <stop offset="1" stop-color="#34D399"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">IncuBrix <strong>Studio</strong></span>
+          <span class="brand-badge">Deterministic 100% Content-Anchored</span>
+        </div>
+      </div>
+
+      <div class="header-status">
+        <div class="status-pill status-ready" id="backendStatus">
+          <span class="dot"></span>
+          <span id="backendStatusText">Engine Ready</span>
+        </div>
+        <a href="/docs" target="_blank" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          API Docs
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Workspace Grid -->
+    <main class="workspace-grid">
+      <!-- Left Column: Source Media & Instruction Bar -->
+      <section class="panel left-panel">
+        <!-- 1. Source Video Selection -->
+        <div class="card source-card">
+          <div class="card-header">
+            <h3>1. Video Source</h3>
+            <span class="session-id-badge" id="sessionIdBadge">No Active Session</span>
+          </div>
+
+          <div class="source-controls">
+            <div class="form-group">
+              <label for="samplePicker">Built-in Test Media:</label>
+              <select id="samplePicker" class="input-select">
+                <option value="test_media/single_speaker_interview.mp4">Single Speaker Interview (90s, Worked Example)</option>
+                <option value="test_media/two_speaker_podcast.mp4">Two Speaker Podcast (120s, Multi-speaker)</option>
+                <option value="test_media/vfr_phone_clip.mp4">VFR Mobile Phone Clip (10s)</option>
+                <option value="test_media/no_audio_clip.mp4">No Audio Clip (10s Silent)</option>
+              </select>
+            </div>
+
+            <div class="source-tabs">
+              <button class="tab-btn active" id="tabSampleBtn">Use Built-in</button>
+              <button class="tab-btn" id="tabUrlBtn">Video URL</button>
+              <button class="tab-btn" id="tabUploadBtn">Upload File</button>
+            </div>
+
+            <div class="tab-content" id="tabUrlContent" style="display: none;">
+              <input type="url" id="customUrlInput" class="input-text" placeholder="https://example.com/video.mp4">
+            </div>
+
+            <div class="tab-content" id="tabUploadContent" style="display: none;">
+              <input type="file" id="fileUploadInput" class="input-file" accept="video/mp4,video/quicktime">
+            </div>
+
+            <button id="btnLoadSession" class="btn btn-primary">
+              <span class="btn-spinner" id="loadSpinner" style="display: none;"></span>
+              Initialize Session & Index
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. Natural Language Instruction Input -->
+        <div class="card prompt-card">
+          <div class="card-header">
+            <h3>2. Prompt-Based Edit Instruction</h3>
+            <span class="rule-hint">100% Deterministic Gate</span>
+          </div>
+
+          <div class="instruction-box">
+            <div class="input-wrapper">
+              <input type="text" id="instructionInput" class="input-prompt" placeholder="e.g. Cut the first 30 seconds, or remove pricing..." autocomplete="off">
+              <button id="btnSendInstruction" class="btn btn-action">Apply</button>
+            </div>
+
+            <!-- Preset Chips -->
+            <div class="preset-chips-section">
+              <span class="chips-label">One-Click Presets:</span>
+              <div class="chips-container">
+                <button class="chip" data-prompt="Add a caption 'Welcome!' when I say welcome to the channel">
+                  + Add Caption 'Welcome!'
+                </button>
+                <button class="chip" data-prompt="Cut the first 30 seconds">
+                  ✂ Cut First 30s
+                </button>
+                <button class="chip" data-prompt="Remove the part about pricing">
+                  ❓ Cut Pricing (Ambiguous)
+                </button>
+                <button class="chip" data-prompt="Speed up from 1:00 to 1:30 by 2x">
+                  ⚡ 2x Speed (1:00-1:30)
+                </button>
+                <button class="chip" data-prompt="Actually, put the intro back">
+                  ↺ Put Intro Back
+                </button>
+                <button class="chip" data-prompt="Undo">
+                  ↩ Undo
+                </button>
+                <button class="chip" data-prompt="Make that caption red">
+                  🎨 Make Caption Red
+                </button>
+                <button class="chip chip-danger" data-prompt="Cut the first 500 seconds">
+                  ⛔ Cut Whole Video (Rejection Test)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Decision Gate Response Cards Feed -->
+        <div class="card feed-card">
+          <div class="card-header">
+            <h3>3. Decision Gate Response Feed</h3>
+            <span class="history-count" id="historyCount">0 Edits</span>
+          </div>
+          <div class="feed-container" id="responseFeed">
+            <div class="empty-feed-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <p>No instructions applied yet. Load a video session above and click any preset or type an edit prompt.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Timeline Visualizer, Player & Render Bar -->
+      <section class="panel right-panel">
+        <!-- 4. Interactive Word-Anchored Timeline Visualizer -->
+        <div class="card visualizer-card">
+          <div class="card-header">
+            <div class="header-with-badge">
+              <h3>4. Word-Anchored Timeline Visualizer</h3>
+              <span class="tag-hash" id="timelineHashBadge">Hash: N/A</span>
+            </div>
+            <div class="timeline-stats">
+              <span class="stat-item">Duration: <strong id="timelineDurationText">0.0s</strong></span>
+              <span class="stat-item">Words: <strong id="timelineWordCount">0</strong></span>
+            </div>
+          </div>
+
+          <div class="visualizer-wrapper">
+            <!-- Timeline Legend -->
+            <div class="visualizer-legend">
+              <span class="legend-item"><span class="legend-color speaker-0"></span> Speaker 0</span>
+              <span class="legend-item"><span class="legend-color speaker-1"></span> Speaker 1</span>
+              <span class="legend-item"><span class="legend-color sped-up"></span> Sped Up (2x)</span>
+              <span class="legend-item"><span class="legend-color cut-span"></span> Cut / Inactive</span>
+              <span class="legend-item"><span class="legend-color caption-badge-legend"></span> Caption Lock</span>
+            </div>
+
+            <!-- Interactive Word Stream -->
+            <div class="word-stream-container" id="wordStream">
+              <div class="timeline-placeholder">Initialize a session to inspect word-anchored tokens.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Render, Player & Export Center -->
+        <div class="card player-card">
+          <div class="card-header">
+            <h3>5. Frame-Accurate Render & Export</h3>
+            <div class="render-actions">
+              <button id="btnRender" class="btn btn-success" disabled>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Render MP4 & Export .OTIO
+              </button>
+            </div>
+          </div>
+
+          <!-- Render Progress Bar -->
+          <div class="progress-section" id="progressSection" style="display: none;">
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;"></div>
+            </div>
+            <div class="progress-labels">
+              <span id="progressStatusText">Rendering frame-accurate video...</span>
+              <span id="progressPercentText">0%</span>
+            </div>
+          </div>
+
+          <!-- Video Player & Export Links -->
+          <div class="player-wrapper">
+            <video id="videoPlayer" controls class="video-display" style="display: none;">
+              Your browser does not support HTML5 video.
+            </video>
+            <div id="videoPlaceholder" class="video-placeholder-box">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span>Rendered video playback will appear here upon completion</span>
+            </div>
+          </div>
+
+          <!-- Artifact Download Tabs -->
+          <div class="export-tray" id="exportTray" style="display: none;">
+            <a id="downloadVideoBtn" class="btn btn-secondary" download>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download MP4
+            </a>
+            <a id="downloadOtioBtn" class="btn btn-secondary" download>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download .OTIO (NLE Project)
+            </a>
+            <button id="btnViewManifest" class="btn btn-outline">Inspect Manifest.json</button>
+            <button id="btnViewTimeline" class="btn btn-outline">Inspect Timeline.json</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal for JSON Inspection -->
+    <div class="modal-overlay" id="jsonModal" style="display: none;">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h3 id="modalTitle">JSON Inspector</h3>
+          <button class="modal-close" id="modalCloseBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <pre id="modalJsonContent"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
