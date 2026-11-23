@@ -9,6 +9,14 @@ os.environ.setdefault("QUEUE_BACKEND", "inprocess")
 os.environ.setdefault("STORAGE_BACKEND", "local")
 os.environ.setdefault("DATABASE_URL", "sqlite:///./data/incubrix.db")
 
+# Automatically generate synthetic sample media if running in fresh cloud container
+if not os.path.exists("test_media/single_speaker_interview.mp4"):
+    try:
+        from scripts.generate_test_media import main as generate_media
+        generate_media()
+    except Exception as _e:
+        print(f"Sample generation notice: {_e}")
+
 from service.app import app
 
 try:
