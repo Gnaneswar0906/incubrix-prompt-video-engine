@@ -1,8 +1,23 @@
-﻿__pycache__/
+﻿# Byte-compiled / optimized / DLL files
+__pycache__/
 *.py[cod]
+*$py.class
+*.pyd
+*.bak
+
+# Testing & Virtual environments
 .pytest_cache/
+.coverage
+htmlcov/
 .env
 .venv/
 venv/
-*.mp4
-*.wav
+ENV/
+
+# Temporary data, database & runtime renders
+data/renders/
+data/storage/
+data/session_outputs/
+data/*.db
+*.db
+test_out.mp4

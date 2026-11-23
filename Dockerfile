@@ -3,8 +3,12 @@
 FROM python:3.11-slim
 
 # Prevent python from writing pyc files and buffering stdout/stderr
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PORT=7860 \
+    QUEUE_BACKEND=inprocess \
+    STORAGE_BACKEND=local \
+    DATABASE_URL=sqlite:////app/data/incubrix.db
 
 WORKDIR /app
 
@@ -21,10 +25,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application source
 COPY . .
 
-# Ensure data and renders directory exist
-RUN mkdir -p /app/data/renders /app/data/storage
+# Ensure data and renders directory exist and are writable
+RUN mkdir -p /app/data/renders /app/data/storage /app/test_pack/sessions && chmod -R 777 /app/data /app/test_pack
 
-EXPOSE 8000
+# Expose port (default 7860 for Hugging Face Spaces; Render/Cloud Run inject $PORT)
+EXPOSE 7860
 
-# Default entrypoint runs the FastAPI service; worker container overrides with 'python worker.py'
-CMD ["uvicorn", "service.app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Default entrypoint binds dynamically to ${PORT:-7860}
+CMD ["sh", "-c", "uvicorn service.app:app --host 0.0.0.0 --port ${PORT:-7860}"]
