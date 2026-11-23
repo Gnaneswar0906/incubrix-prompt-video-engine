@@ -274,7 +274,7 @@ function addResponseCard(instruction, resp) {
   historyCount.textContent = `${editHistory.length} Edits`;
 }
 
-window.submitClarificationChoice = function(encodedInstruction, encodedChoice) {
+window.submitClarificationChoice = function (encodedInstruction, encodedChoice) {
   const instruction = decodeURIComponent(encodedInstruction);
   const choice = decodeURIComponent(encodedChoice);
   applyInstruction(instruction, choice);
